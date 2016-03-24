@@ -1,0 +1,19 @@
+{
+	"name" : "Hongliang/defender",
+	"description" : "Defend your site from malicious scans",
+	"homepage" : "https://github.com/h-wang/defender",
+	"keywords" :  ["Hongliang", "defender", "security", "scan"],
+	"type" : "application",
+    "license": "MIT",
+	"authors" : [{
+			"name" : "Hongliang",
+			"email" : "git@hongliang.nl",
+			"role" : "Development"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Hongliang\\Defender\\" : "src/"
+		}
+	}
+}
