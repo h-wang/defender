@@ -59,7 +59,6 @@ class Defender
         foreach ($this->voters as $voter) {
             if ($voter['voter']->init()->vote()) {
                 return $voter['level'];
-                break;
             }
         }
 
@@ -88,20 +87,16 @@ class Defender
                 header('HTTP/1.1 301 Moved Permanently');
                 header('Location: '.$this->getRedirectUrl());
                 exit;
-                break;
             case self::REVANGE:
                 header('HTTP/1.1 302 Moved Temporarily');
                 header('Location: '.$this->getRedirectUrl());
                 exit;
-                break;
             case self::DENY:
                 header('HTTP/1.1 500 Internal Server Error');
                 exit;
-                break;
             case self::FORBIDDEN:
                 header('HTTP/1.0 403 Forbidden');
                 exit;
-                break;
             case self::NOTICE:
             default:
                 break;

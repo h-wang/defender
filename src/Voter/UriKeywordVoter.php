@@ -22,7 +22,6 @@ class UriKeywordVoter implements VoterInterface
         foreach ($keywords as $k) {
             if (false !== strpos($keyword, $k)) {
                 return true;
-                break;
             }
         }
 
