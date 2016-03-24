@@ -1,3 +1,4 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/h-wang/defender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/h-wang/defender/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/h-wang/defender/badges/build.png?b=master)](https://scrutinizer-ci.com/g/h-wang/defender/build-status/master)
 
 # Defender
