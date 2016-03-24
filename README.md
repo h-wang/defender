@@ -1,3 +1,5 @@
+[![Build Status](https://scrutinizer-ci.com/g/h-wang/defender/badges/build.png?b=master)](https://scrutinizer-ci.com/g/h-wang/defender/build-status/master)
+
 # Defender
 Defend your site from malicious scans.
 It works with defense voters. Currently request URI keyword and IP range defense voters are supported.
@@ -41,6 +43,7 @@ $defender->react();
 ```
 
 ## TODO
- - [] Support logging and log everything that's above the normal level
- - [] Separate IP ranges into separate file or even external rourse
- - [] Separate URI keywords into categories, e.g. Wordpress, Joomla. This way it's possible to be used in those CMSes.
+
+ - [ ] Support logging and log everything that's above the normal level
+ - [ ] Separate IP ranges into separate file or even external rourse
+ - [ ] Separate URI keywords into categories, e.g. Wordpress, Joomla. This way it's possible to be used in those CMSes.

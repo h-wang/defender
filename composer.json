@@ -2,7 +2,7 @@
 	"name" : "hongliang/defender",
 	"description" : "Defend your site from malicious scans",
 	"homepage" : "https://github.com/h-wang/defender",
-	"keywords" :  ["Hongliang", "defender", "security", "scan"],
+	"keywords" :  ["Hongliang", "defender", "security", "scan", "bot"],
 	"type" : "application",
     "license": "MIT",
 	"authors" : [{
