@@ -11,6 +11,9 @@ Install via composer
 composer require hongliang/defender
 ```
 ## How it works
+
+If you are running a Silex or Symfony application, the following code should be injected after the autoload but before the routers. Otherwise it will trigger an undefined route exception.
+
 The simple way:
 ```php
 \Hongliang\Defender\Defender::defend();
