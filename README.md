@@ -49,5 +49,5 @@ $defender->react();
 ## TODO
 
  - [ ] Support logging and log everything that's above the normal level
- - [ ] Separate IP ranges into separate file or even external rourse
+ - [ ] Separate IP ranges into separate file or even external resource
  - [ ] Separate URI keywords into categories, e.g. Wordpress, Joomla. This way it's possible to be used in those CMSes.
