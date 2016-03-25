@@ -4,18 +4,8 @@ namespace Hongliang\Defender\Voter;
 
 use Hongliang\Defender\Utility\IpTools;
 
-class IpRangeVoter implements VoterInterface
+class IpRangeVoter extends BaseVoter implements VoterInterface
 {
-    private $assets = null;
-    private $target = null;
-
-    public function init()
-    {
-        $this->target = IpTools::getClientIp();
-
-        return $this;
-    }
-
     public function vote($ip = null)
     {
         $ip = $ip ?: $this->target;
@@ -35,16 +25,14 @@ class IpRangeVoter implements VoterInterface
         return false;
     }
 
-    public function getAssets()
+    protected function setDefaultTarget()
     {
-        if (null === $this->assets) {
-            $this->assets = $this->getDefaultAssets();
-        }
+        $this->target = IpTools::getClientIp();
 
-        return $this->assets;
+        return $this;
     }
 
-    private function getDefaultAssets()
+    protected function getDefaultAssets()
     {
         return [
             ['59.62.0.0', '59.63.255.255'], // CHINANET JIANGXI PROVINCE NETWORK
@@ -64,4 +52,17 @@ class IpRangeVoter implements VoterInterface
             ['222.208.0.0', '222.215.255.255'], // CHINANET Sichuan province network
         ];
     }
+
+    /*
+    public function setAssets($assets)
+    {
+        if (!is_array($assets)) {
+            throw new \Exception(static::class.' assets must be an array');
+        }
+
+        $this->assets = $assets;
+
+        return $this;
+    }
+    */
 }

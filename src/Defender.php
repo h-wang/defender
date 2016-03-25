@@ -22,9 +22,8 @@ class Defender
     {
         $defender = new self();
         $defender->addVoter(new IpRangeVoter(), self::DENY)
-            ->addVoter(new UriKeywordVoter(), self::FORBIDDEN);
-
-        $defender->react();
+            ->addVoter(new UriKeywordVoter(), self::FORBIDDEN)
+            ->react();
     }
 
     public function addVoter(VoterInterface $voter, $level = self::FORBIDDEN)
@@ -57,7 +56,7 @@ class Defender
         }
         $this->sortVoters();
         foreach ($this->voters as $voter) {
-            if ($voter['voter']->init()->vote()) {
+            if ($voter['voter']->vote()) {
                 return $voter['level'];
             }
         }

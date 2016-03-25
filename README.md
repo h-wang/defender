@@ -26,7 +26,8 @@ use Hongliang\Defender\Voter\UriKeywordVoter;
 
 $defender = new Defender();
 $defender->addVoter(new IpRangeVoter())
-    ->addVoter(new UriKeywordVoter())->react();
+    ->addVoter(new UriKeywordVoter())
+    ->react();
 ```
 Customize to your own needs:
 ```php
@@ -39,8 +40,26 @@ use Hongliang\Defender\Voter\UriKeywordVoter;
 $defender = new Defender();
 $defender->addVoter(new IpRangeVoter(), Defender::FORBIDDEN)
     ->addVoter(new UriKeywordVoter(), Defender::REVANGE)
-    ->setRedirectUrl('http://www.google.com')->react();
+    ->setRedirectUrl('http://www.google.com')
+    ->react();
 ```
+More advanced use:
+```php
+use Hongliang\Defender\Defender;
+use Hongliang\Defender\Voter\IpRangeVoter;
+use Hongliang\Defender\Voter\UriKeywordVoter;
+
+$voter = new UriKeywordVoter();
+$voter->setAssets(['fckedit', '/wp-']);
+$ipVoter = new IpRangeVoter();
+$ipVoter->setAssets([['0.0.0.0', '255.255.255.255']]);
+
+$defender = new Defender();
+$defender->addVoter($ipVoter, Defender::FORBIDDEN)
+    ->addVoter($voter, Defender::DENY)
+    ->react();
+```
+
 
 ## TODO
 

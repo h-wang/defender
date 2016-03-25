@@ -2,25 +2,14 @@
 
 namespace Hongliang\Defender\Voter;
 
-class UriKeywordVoter implements VoterInterface
+class UriKeywordVoter extends BaseVoter implements VoterInterface
 {
-    private $assets = null;
-    private $target = null;
-
-    public function init()
+    public function vote($uri = null)
     {
-        $this->target = $_SERVER['REQUEST_URI'];
-
-        return $this;
-    }
-
-    public function vote($keyword = null)
-    {
-        $keyword = strtolower($keyword ?: $this->target);
-        // get bad ip ranges
+        $uri = strtolower($uri ?: $this->target);
         $keywords = $this->getAssets();
         foreach ($keywords as $k) {
-            if (false !== strpos($keyword, $k)) {
+            if (false !== strpos($uri, $k)) {
                 return true;
             }
         }
@@ -28,16 +17,14 @@ class UriKeywordVoter implements VoterInterface
         return false;
     }
 
-    public function getAssets()
+    protected function setDefaultTarget()
     {
-        if (null === $this->assets) {
-            $this->assets = $this->getDefaultAssets();
-        }
+        $this->target = $_SERVER['REQUEST_URI'];
 
-        return $this->assets;
+        return $this;
     }
 
-    private function getDefaultAssets()
+    protected function getDefaultAssets()
     {
         return [
             'fckedit',
@@ -50,4 +37,21 @@ class UriKeywordVoter implements VoterInterface
             '/plus',
         ];
     }
+
+    /*
+    public function setAssets($assets)
+    {
+        // skip checks for performance
+        // if (!is_array($assets)) {
+        //     throw new \Exception('Assets of '.static::class.' must be an array');
+        // }
+        // if (count($assets) != count($assets, COUNT_RECURSIVE)) {
+        //     throw new \Exception('Assets of '.static::class.' must be a one-dimensional array');
+        // }
+
+        $this->assets = $assets;
+
+        return $this;
+    }
+    */
 }
