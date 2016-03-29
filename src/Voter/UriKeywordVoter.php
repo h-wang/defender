@@ -30,24 +30,26 @@ class UriKeywordVoter extends BaseVoter implements VoterInterface
             'fckedit',
             '/administrator/',
             '/wp-',
+            'xmlrpc',
             '/filemanager',
             '/bbs',
             '/convert',
             '/product',
             '/plus',
+            'whitelist.pac',
         ];
     }
 
     /*
     public function setAssets($assets)
     {
-        // skip checks for performance
-        // if (!is_array($assets)) {
-        //     throw new \Exception('Assets of '.static::class.' must be an array');
-        // }
-        // if (count($assets) != count($assets, COUNT_RECURSIVE)) {
-        //     throw new \Exception('Assets of '.static::class.' must be a one-dimensional array');
-        // }
+        skip checks for performance
+        if (!is_array($assets)) {
+            throw new \Exception('Assets of '.static::class.' must be an array');
+        }
+        if (count($assets) != count($assets, COUNT_RECURSIVE)) {
+            throw new \Exception('Assets of '.static::class.' must be a one-dimensional array');
+        }
 
         $this->assets = $assets;
 
