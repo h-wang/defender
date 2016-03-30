@@ -36,10 +36,10 @@ use Hongliang\Defender\Voter\IpRangeVoter;
 use Hongliang\Defender\Voter\UriKeywordVoter;
 
 // it's possible to customize the level of reaction as the 2nd parameter of addVoter()
-// it's possible to set a URL to redirect to when the level is revange or higher. By default it's localhost
+// it's possible to set a URL to redirect to when the level is revenge or higher. By default it's localhost
 $defender = new Defender();
 $defender->addVoter(new IpRangeVoter(), Defender::FORBIDDEN)
-    ->addVoter(new UriKeywordVoter(), Defender::REVANGE)
+    ->addVoter(new UriKeywordVoter(), Defender::REVENGE)
     ->setRedirectUrl('http://www.google.com')
     ->react();
 ```

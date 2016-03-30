@@ -12,8 +12,8 @@ class Defender
     const NOTICE = 1;
     const FORBIDDEN = 2;
     const DENY = 3;
-    const REVANGE = 4;
-    const REVANGE_PERMANENT = 5;
+    const REVENGE = 4;
+    const REVENGE_PERMANENT = 5;
 
     private $voters = null;
     private $redirectUrl = 'http://localhost';
@@ -82,11 +82,11 @@ class Defender
             $level = $this->exam();
         }
         switch ($level) {
-            case self::REVANGE_PERMANENT:
+            case self::REVENGE_PERMANENT:
                 header('HTTP/1.1 301 Moved Permanently');
                 header('Location: '.$this->getRedirectUrl());
                 exit;
-            case self::REVANGE:
+            case self::REVENGE:
                 header('HTTP/1.1 302 Moved Temporarily');
                 header('Location: '.$this->getRedirectUrl());
                 exit;
