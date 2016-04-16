@@ -34,12 +34,14 @@ Customize to your own needs:
 use Hongliang\Defender\Defender;
 use Hongliang\Defender\Voter\IpRangeVoter;
 use Hongliang\Defender\Voter\UriKeywordVoter;
+use Hongliang\Defender\Voter\SpiderVoter;
 
 // it's possible to customize the level of reaction as the 2nd parameter of addVoter()
 // it's possible to set a URL to redirect to when the level is revenge or higher. By default it's localhost
 $defender = new Defender();
 $defender->addVoter(new IpRangeVoter(), Defender::FORBIDDEN)
     ->addVoter(new UriKeywordVoter(), Defender::REVENGE)
+    ->addVoter(new SpiderVoter(), Defender::DENY)
     ->setRedirectUrl('http://www.google.com')
     ->react();
 ```
@@ -48,15 +50,20 @@ More advanced use:
 use Hongliang\Defender\Defender;
 use Hongliang\Defender\Voter\IpRangeVoter;
 use Hongliang\Defender\Voter\UriKeywordVoter;
+use Hongliang\Defender\Voter\SpiderVoter;
 
 $voter = new UriKeywordVoter();
 $voter->setAssets(['fckedit', '/wp-']);
 $ipVoter = new IpRangeVoter();
 $ipVoter->setAssets([['0.0.0.0', '255.255.255.255']]);
 
+$spiderVoter = new SpiderVoter();
+$spiderVoter->setAssets(['Baiduspider', '360spider']);
+
 $defender = new Defender();
 $defender->addVoter($ipVoter, Defender::FORBIDDEN)
     ->addVoter($voter, Defender::DENY)
+    ->addVoter($spiderVoter, Defender::DENY)
     ->react();
 ```
 
