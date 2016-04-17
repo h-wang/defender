@@ -5,6 +5,7 @@ namespace Hongliang\Defender;
 use Hongliang\Defender\Voter\VoterInterface;
 use Hongliang\Defender\Voter\IpRangeVoter;
 use Hongliang\Defender\Voter\UriKeywordVoter;
+use Hongliang\Defender\Voter\SpiderVoter;
 
 class Defender
 {
@@ -23,6 +24,7 @@ class Defender
         $defender = new self();
         $defender->addVoter(new IpRangeVoter(), self::DENY)
             ->addVoter(new UriKeywordVoter(), self::FORBIDDEN)
+            ->addVoter(new SpiderVoter(), self::DENY)
             ->react();
     }
 
