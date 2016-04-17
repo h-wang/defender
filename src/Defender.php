@@ -83,24 +83,33 @@ class Defender
         if (null === $level) {
             $level = $this->exam();
         }
+        $exit = false;
         switch ($level) {
             case self::REVENGE_PERMANENT:
                 header('HTTP/1.1 301 Moved Permanently');
                 header('Location: '.$this->getRedirectUrl());
-                exit;
+                $exit = true;
+                break;
             case self::REVENGE:
                 header('HTTP/1.1 302 Moved Temporarily');
                 header('Location: '.$this->getRedirectUrl());
-                exit;
+                $exit = true;
+                break;
             case self::DENY:
                 header('HTTP/1.1 500 Internal Server Error');
-                exit;
+                $exit = true;
+                break;
             case self::FORBIDDEN:
                 header('HTTP/1.0 403 Forbidden');
-                exit;
+                $exit = true;
+                break;
             case self::NOTICE:
             default:
                 break;
+        }
+
+        if ($exit) {
+            exit;
         }
     }
 }
