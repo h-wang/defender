@@ -14,11 +14,20 @@ class IpRangeVoter extends BaseVoter implements VoterInterface
         }
         // convert ip to number
         $long = ip2long($ip);
+
         // get bad ip ranges
         $ips = $this->getAssets();
-        foreach ($ips as $ipRange) {
-            if ($long <= ip2long($ipRange[1]) && $long >= ip2long($ipRange[0])) {
-                return true;
+        if ($this->assetsBuilt) {
+            foreach ($ips as $ipRange) {
+                if ($long <= $ipRange[1] && $long >= $ipRange[0]) {
+                    return true;
+                }
+            }
+        } else {
+            foreach ($ips as $ipRange) {
+                if ($long <= ip2long($ipRange[1]) && $long >= ip2long($ipRange[0])) {
+                    return true;
+                }
             }
         }
 
@@ -53,6 +62,20 @@ class IpRangeVoter extends BaseVoter implements VoterInterface
             ['202.75.32.0', '202.75.63.254'], // TM VADS DC Hosting
             ['222.208.0.0', '222.215.255.255'], // CHINANET Sichuan province network
         ];
+    }
+
+    protected $assetsBuilt = false;
+
+    public function getAssetsBuilt()
+    {
+        return $this->assetsBuilt;
+    }
+
+    public function setAssetsBuilt($assetsBuilt)
+    {
+        $this->assetsBuilt = $assetsBuilt;
+
+        return $this;
     }
 
     /*
