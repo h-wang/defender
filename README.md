@@ -70,5 +70,6 @@ $defender->addVoter($ipVoter, Defender::FORBIDDEN)
 
 ## TODO
  - [x] Separate IP ranges into separate file or even external resource
+ - [x] Build IP ranges into long integer for better performance
  - [ ] Support logging and log everything that's above the normal level
  - [ ] Separate URI keywords into categories, e.g. Wordpress, Joomla. This way it's possible to be used in those CMSes.
