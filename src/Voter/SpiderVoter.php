@@ -11,7 +11,7 @@ class SpiderVoter extends BaseVoter implements VoterInterface
         }
         $spiders = $this->getAssets();
         foreach ($spiders as $s) {
-            if (false !== strpos($_SERVER['HTTP_USER_AGENT'], $s)) {
+            if (false !== stripos($_SERVER['HTTP_USER_AGENT'], $s)) {
                 return true;
             }
         }
